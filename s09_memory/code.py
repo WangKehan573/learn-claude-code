@@ -262,7 +262,7 @@ def extract_memories(messages: list):
         for block in response.content:
             if block.type == 'text':
             text = block.text
-        text = response.content[0].text.strip()
+        
         # Extract JSON array from response
         match = re.search(r'\[.*\]', text, re.DOTALL)
         if not match:
