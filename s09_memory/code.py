@@ -259,6 +259,9 @@ def extract_memories(messages: list):
         response = client.messages.create(
             model=MODEL, messages=[{"role": "user", "content": prompt}], max_tokens=800
         )
+        for block in response.content:
+            if block.type == 'text':
+            text = block.text
         text = response.content[0].text.strip()
         # Extract JSON array from response
         match = re.search(r'\[.*\]', text, re.DOTALL)
